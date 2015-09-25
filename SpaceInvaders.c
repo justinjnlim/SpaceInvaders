@@ -358,7 +358,7 @@ void TitleScreen(void){
 	Nokia5110_SetCursor(2,1);
 	Nokia5110_OutString("INVADERS");
 	Nokia5110_SetCursor(0,5);
-	Nokia5110_OutString("by: Liozzi");
+	Nokia5110_OutString("by:Justin L");
 	Delay100ms(5);
 	Sound_GameOver();	
 	while(!Fire){
@@ -432,7 +432,7 @@ void ExplodeSpr(sprite* spr, unsigned char var){
 }
 
 void PrintBunker(sprite* bunker){
-// Print appropraite varaint of bunker
+// Print appropriate variant of bunker
 	if(bunker->hp > 20)
 		PrintSpr(bunker, 0);
 	else if(bunker->hp > 10)
@@ -448,7 +448,7 @@ void PrintLives (sprite* lives){
 }
 
 void GameInit(void){
-// Intialise player's ship, bunkers, lives and print them
+// Intialize player's ship, bunkers, lives and print them
 // PlayerSpr will be at bottom-centre
 // BunkerSprs[] will be evenly spaced across screen 
 	unsigned char x_coord, y_coord; // x-y coordinates 		
@@ -475,12 +475,12 @@ void GameInit(void){
 		livesSprs[i].hp=0;
 	}
 	
-	// Player initialisation
+	// Player initialization
 	x_coord=MINSCREENX + (EFFSCREENW - playerW)/2;
 	y_coord=MAXSCREENY;
 	playerSpr = Player_Init(x_coord,y_coord);
 	
-	// Bunkers initialisation
+	// Bunkers initialization
 	y_coord = MAXSCREENY - playerH;
 	gap = (float)(EFFSCREENW - BUNKERNUM * bunkerW - playerW) / (float)(BUNKERNUM - 1);
 	for(i = 0; i < BUNKERNUM; i++){ // For each bunker
@@ -488,7 +488,7 @@ void GameInit(void){
 		bunkerSprs[i] = Bunker_Init(x_coord, y_coord);
 	}
 	
-	// Lives initialisation
+	// Lives initialization
 	y_coord = MINSCREENY + livesH-1;
 	gap=0;
 	for (i=0; i<playerSpr.hp; i++){
@@ -549,7 +549,7 @@ void Delay100ms(unsigned long count){unsigned long volatile time;
 }
 
 void Timer1_Init(float freq){ 
-// Initalise Timer1 to trigger every specified seconds(assuming 880Mhz PLL)
+// Initalize Timer1 to trigger every specified seconds(assuming 880Mhz PLL)
   unsigned long volatile delay;
   SYSCTL_RCGCTIMER_R |= 0x02;
   delay = SYSCTL_RCGCTIMER_R;

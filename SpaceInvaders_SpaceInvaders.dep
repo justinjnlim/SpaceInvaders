@@ -1,31 +1,0 @@
-Dependencies for Project 'SpaceInvaders', Target 'SpaceInvaders': (DO NOT MODIFY !)
-F (.\startup.s)(0x51981D5A)(--cpu Cortex-M4 --pd "__RTX SETA 1" --pd "__EVAL SETA 1" -g --apcs=interwork -I C:\Keil\ARM\RV31\INC-I C:\Keil\ARM\CMSIS\Include-I C:\Keil\ARM\Inc\Luminary--list .\startup.lst --xref -o .\startup.o --depend .\startup.d)
-F (.\Nokia5110.c)(0x5344459E)(-c --cpu Cortex-M4 -D__RTX -D__EVAL -g -O0 --apcs=interwork --split_sections --signed_chars -I.. -I..\..\..-I C:\Keil\ARM\RV31\INC-I C:\Keil\ARM\CMSIS\Include-I C:\Keil\ARM\Inc\Luminary-Drvmdk -DPART_LM4F120H5QR-o .\nokia5110.o --omf_browse .\nokia5110.crf --depend .\nokia5110.d)
-I (Nokia5110.h)(0x5344459E)
-F (.\random.s)(0x54A16BDA)(--cpu Cortex-M4 --pd "__RTX SETA 1" --pd "__EVAL SETA 1" -g --apcs=interwork -I C:\Keil\ARM\RV31\INC-I C:\Keil\ARM\CMSIS\Include-I C:\Keil\ARM\Inc\Luminary--list .\random.lst --xref -o .\random.o --depend .\random.d)
-F (.\SpaceInvaders.c)(0x5604D3C5)(-c --cpu Cortex-M4 -D__RTX -D__EVAL -g -O0 --apcs=interwork --split_sections --signed_chars -I.. -I..\..\..-I C:\Keil\ARM\RV31\INC-I C:\Keil\ARM\CMSIS\Include-I C:\Keil\ARM\Inc\Luminary-Drvmdk -DPART_LM4F120H5QR-o .\spaceinvaders.o --omf_browse .\spaceinvaders.crf --depend .\spaceinvaders.d)
-I (..//tm4c123gh6pm.h)(0x51D49AE2)
-I (Nokia5110.h)(0x5344459E)
-I (Random.h)(0x54A16BDA)
-I (TExaS.h)(0x54A0C24E)
-I (C:\Keil\ARM\ARMCC\include\stdlib.h)(0x51C86E14)
-I (controls.h)(0x5604CA28)
-I (sprites.h)(0x5604C340)
-I (sfxDriver.h)(0x5604CC55)
-I (leds.h)(0x55488294)
-I (ScreenImages.c)(0x5548930D)
-F (.\TExaS.c)(0x54A16DA2)(-c --cpu Cortex-M4 -D__RTX -D__EVAL -g -O0 --apcs=interwork --split_sections --signed_chars -I.. -I..\..\..-I C:\Keil\ARM\RV31\INC-I C:\Keil\ARM\CMSIS\Include-I C:\Keil\ARM\Inc\Luminary-Drvmdk -DPART_LM4F120H5QR-o .\texas.o --omf_browse .\texas.crf --depend .\texas.d)
-I (TExaS.h)(0x54A0C24E)
-F (.\controls.c)(0x5604CDC6)(-c --cpu Cortex-M4 -D__RTX -D__EVAL -g -O0 --apcs=interwork --split_sections --signed_chars -I.. -I..\..\..-I C:\Keil\ARM\RV31\INC-I C:\Keil\ARM\CMSIS\Include-I C:\Keil\ARM\Inc\Luminary-Drvmdk -DPART_LM4F120H5QR-o .\controls.o --omf_browse .\controls.crf --depend .\controls.d)
-I (controls.h)(0x5604CA28)
-I (..\tm4c123gh6pm.h)(0x51D49AE2)
-F (.\sfxDriver.c)(0x5604CD9F)(-c --cpu Cortex-M4 -D__RTX -D__EVAL -g -O0 --apcs=interwork --split_sections --signed_chars -I.. -I..\..\..-I C:\Keil\ARM\RV31\INC-I C:\Keil\ARM\CMSIS\Include-I C:\Keil\ARM\Inc\Luminary-Drvmdk -DPART_LM4F120H5QR-o .\sfxdriver.o --omf_browse .\sfxdriver.crf --depend .\sfxdriver.d)
-I (sfxDriver.h)(0x5604CC55)
-I (..\tm4c123gh6pm.h)(0x51D49AE2)
-I (SoundFiles.c)(0x55449000)
-F (.\sprites.c)(0x5604C258)(-c --cpu Cortex-M4 -D__RTX -D__EVAL -g -O0 --apcs=interwork --split_sections --signed_chars -I.. -I..\..\..-I C:\Keil\ARM\RV31\INC-I C:\Keil\ARM\CMSIS\Include-I C:\Keil\ARM\Inc\Luminary-Drvmdk -DPART_LM4F120H5QR-o .\sprites.o --omf_browse .\sprites.crf --depend .\sprites.d)
-I (sprites.h)(0x5604C340)
-I (spriteBMP.c)(0x5604CE6B)
-F (.\leds.c)(0x554883D2)(-c --cpu Cortex-M4 -D__RTX -D__EVAL -g -O0 --apcs=interwork --split_sections --signed_chars -I.. -I..\..\..-I C:\Keil\ARM\RV31\INC-I C:\Keil\ARM\CMSIS\Include-I C:\Keil\ARM\Inc\Luminary-Drvmdk -DPART_LM4F120H5QR-o .\leds.o --omf_browse .\leds.crf --depend .\leds.d)
-I (Leds.h)(0x55488294)
-I (..\tm4c123gh6pm.h)(0x51D49AE2)
