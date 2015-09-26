@@ -143,7 +143,7 @@ int main(void){
 		Sound_Shoot();
 		timerBonus=0;
 		
-		while(playerSpr.hp > 0){
+		while(playerSpr.hp > 0){	//enter game
 			while(screenRefreshFlag == 0){}		// for synchronization
 			
 			if(levelCleared){
@@ -203,7 +203,9 @@ int main(void){
 }
 //**************************************************************************
 void SysTick_Handler(void){
-// pdate game (player move, player shoot, collision check, bonus ship, etc.)
+// First periodic interrupt handler continuously updates the game on player movement,
+// player firing, projectile movement, collision events, the bonus ship, and level completion.
+// It runs at 30 Hz, so it triggers every 1/30th of a second.
   unsigned char i, j;
 	
 	// Player movement
@@ -269,7 +271,8 @@ void SysTick_Handler(void){
 }
 
 void Timer1A_Handler(void){
-//  Enemies move, enemies shoot,
+// Second periodic interrupt handler manages all the movement of
+// the enemy ships, their firing habits, etc.
 	unsigned char i, j;
 	TIMER1_ICR_R = 0x00000001;
 		
@@ -285,7 +288,7 @@ void Timer1A_Handler(void){
 	Led_2(0);
 	for(i = 0; i < ENEMYCOLS; i++){
 		if((enemyBullets[i].hp == 0) && 							// 1 bullet per row
-			(((rand()) % ENEMYSHOOTDIV) < enemyShoot)){ // random probability
+			(((rand()) % ENEMYSHOOTDIV) < enemyShoot)){ // random probability of firing
 			for(j = 0; j < ENEMYROWS; j++){ 						// find front sprite & fire laser
 				if(enemySprs[j * ENEMYROWS + i].hp != 0){
 					enemyBullets[i] = ShootLaser(&enemySprs[j * ENEMYROWS + i], 0);
@@ -330,35 +333,19 @@ void Timer1A_Handler(void){
 
 /*** Helper Function Implementation ***/
 void TitleScreen(void){
-// Title Screen
+// Displays the Title screen, creator name,
+// and will not proceed until the player presses "Fire" (PE0).
 	TIMER1_CTL_R &= ~0x00000001; // disable Timer1A
 	NVIC_ST_CTRL_R = 0;
 	DAC_Out(0);
 	
-	//***************************************** If more than 32 Kb are available
-//	while(!Fire){
-//		Led_1(0);
-//		Led_2(1);
-//		Delay100ms(3);
-//		Nokia5110_DrawFullImage(Title);
-//		Led_1(1);
-//		Led_2(0);
-//		Delay100ms(3);
-//		Nokia5110_DrawFullImage(Title2);
-//	};
-//	Led_2(0);
-//	Led_1(0);
-//	Sound_Shoot();
-//	Delay100ms(5);
-	
-	//***************************************** If no more than 32 kb are available
 	Nokia5110_Clear();
 	Nokia5110_SetCursor(3,0);
 	Nokia5110_OutString("SPACE");
 	Nokia5110_SetCursor(2,1);
 	Nokia5110_OutString("INVADERS");
 	Nokia5110_SetCursor(0,5);
-	Nokia5110_OutString("by:Justin L");
+	Nokia5110_OutString("by: Justin Lim");
 	Delay100ms(5);
 	Sound_GameOver();	
 	while(!Fire){
@@ -380,7 +367,9 @@ void TitleScreen(void){
 }
 
 void GameOver(void){
-// Game Over Screen
+//  Displays the Game Over screen.
+//	Will show the player their Score and Level,
+// 	press "specialFire" (PE2) to continue.
 	TIMER1_CTL_R &= ~0x00000001; // disable Timer1A
 	NVIC_ST_CTRL_R = 0;
 	DAC_Out(0);
@@ -399,7 +388,7 @@ void GameOver(void){
 	Nokia5110_OutUDec(level);
 	Delay100ms(5);
 	Sound_GameOver();	
-	while(!sAttack){
+	while(!specialFire){
 		Led_1(1);
 		Led_2(1);
 		Delay100ms(1);
@@ -413,7 +402,7 @@ void GameOver(void){
 }
 
 void SysTick_Init(void){
-// Initalise SysTick at 30 Hz (assuming 80Mhz PLL)
+// Initalize SysTick at 30 Hz (assuming 80Mhz PLL)
 	NVIC_ST_CTRL_R = 0; 
 	NVIC_ST_RELOAD_R =  2666667 - 1;
   NVIC_ST_CURRENT_R = 0;
@@ -422,17 +411,17 @@ void SysTick_Init(void){
 }
 
 void PrintSpr(sprite* spr, unsigned char var){
-// Print specified variant of sprite's image
+// Prints specified variant of sprite's image
 	Nokia5110_PrintBMP(spr->x, spr->y, spr->image[var],0);
 }
 
 void ExplodeSpr(sprite* spr, unsigned char var){
-// Print specified variant of sprite's explosion
+// Prints specified variant of sprite's explosion
 	Nokia5110_PrintBMP(spr->x, spr->y, spr->explode[var],0);
 }
 
 void PrintBunker(sprite* bunker){
-// Print appropriate variant of bunker
+// Prints appropriate variant of bunker
 	if(bunker->hp > 20)
 		PrintSpr(bunker, 0);
 	else if(bunker->hp > 10)
@@ -442,13 +431,13 @@ void PrintBunker(sprite* bunker){
 }
 
 void PrintLives (sprite* lives){
-	// Print lives marks
+	// Prints lives marks
 	if(lives->hp > 0)
 		PrintSpr(lives,0);
 }
 
 void GameInit(void){
-// Intialize player's ship, bunkers, lives and print them
+// Intializes player's ship, bunkers, lives and print them
 // PlayerSpr will be at bottom-centre
 // BunkerSprs[] will be evenly spaced across screen 
 	unsigned char x_coord, y_coord; // x-y coordinates 		
@@ -527,7 +516,7 @@ void EnemyHordeInit(void){
 
 void SprCrash(sprite* spr1, sprite* spr2, unsigned char explodeFlag){
 // Checks sprite colliders
-// ExplodeFlag = 1 -> Destoryed sprites get exploded
+// ExplodeFlag = 1 -> Destroyed sprites get exploded
 	if((spr1->hp > 0 && spr2->hp > 0) && CrashCheck(spr1, spr2)){
 		Sound_Hit();
 		spr1->hp -= 1;

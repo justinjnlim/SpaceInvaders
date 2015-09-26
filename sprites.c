@@ -12,7 +12,7 @@
 #define PLAYERLIVES 5 	// Players lives
 
 sprite Player_Init(unsigned char x, unsigned char y){
-// Intialise player's ship sprite at (x,y)
+// Intialize player's ship sprite at (x,y)
 // Returns: sprite of player's ship
 	sprite player;
 	player.x = x;
@@ -28,7 +28,7 @@ sprite Player_Init(unsigned char x, unsigned char y){
 }
 
 sprite Bunker_Init(unsigned char x, unsigned char y){
-// Initialise bunker at (x,y)
+// Initialize bunker at (x,y)
 // Returns: sprite of bunker
 	sprite bunker;
 	bunker.x = x;
@@ -44,7 +44,7 @@ sprite Bunker_Init(unsigned char x, unsigned char y){
 }
 
 sprite Lives_Init(unsigned char x, unsigned char y){
-// Initialise lives icons at (x,y)
+// Initialize lives icons at (x,y)
 // Returns: sprite of lives icons
 	sprite lives;
 	lives.x = x;
@@ -89,7 +89,7 @@ sprite Enemy_Init(unsigned char x, unsigned char y, unsigned char variant){
 }
 
 sprite SmallEnemyBonus_Init(unsigned char x, unsigned char y){
-// Intialise a bonus ship at (x,y)
+// Intialize a bonus ship at (x,y)
 // Returns: sprite of bonus ship
 	sprite bonusShip;
 	bonusShip.x = x;
@@ -107,7 +107,7 @@ sprite SmallEnemyBonus_Init(unsigned char x, unsigned char y){
 }
 
 sprite ShootLaser(sprite* spr, unsigned char updir){
-// Initialise laser sprite at center of sprite 
+// Initialize laser sprite at center of sprite 
 // direction = 0 -> downward laser, direction = 1 -> upwards laser
 // Returns: sprite of laser
 	sprite laser;

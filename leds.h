@@ -1,8 +1,8 @@
-// Leds.h
+// leds.h
+// Justin Lim
 // Runs on LM4F120/TM4C123
-// Fernando Angel Liozzi
-// A Space Invaders game for UTAustinX: UT.6.02x Embedded Systems - Shape the World
-// May 05, 2015
+// Space Invaders - EDX Embedded Systems Final Project
+// 05/05/2015
 
 #ifndef	__LEDS_INCLUDED__
 #define __LEDS_INCLUDED__
