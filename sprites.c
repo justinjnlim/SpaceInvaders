@@ -113,8 +113,8 @@ sprite ShootLaser(sprite* spr, unsigned char updir){
 	sprite laser;
 	laser.width = Laser[18];
 	laser.height = Laser[22];
-	laser.x = spr->x + spr->width / 2 - 1;
-	laser.y = updir == 0 ? spr->y + laser.height : spr->y - spr->height;
+	laser.x = spr->x + spr->width / 2 - 1; //shoot from the centre of the sprite
+	laser.y = updir == 0 ? spr->y + laser.height : spr->y - spr->height; // 
 	if(updir == 0)
 		laser.y = spr->y + laser.height - 1;
 	else

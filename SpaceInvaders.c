@@ -56,7 +56,7 @@
 #include "ScreenImages.c"
 
 /*** DEFINITIONS ***/
-#define BONUSH 7+2 		// height of bonus ship's row
+#define BONUSH 9 		// height of bonus ship's row
 #define PLAYERH 8 		// height of player ship's row
 #define BUNKERH 5 		// height of bunker's row
 
@@ -82,7 +82,7 @@ unsigned int timerBonus;
 
 unsigned long enemyShoot=20; // Each enemy's chance of shotting ratio= enemyShoot/ENEMYSHOOTDIV
 float enemyFreq=3;
-#define ENEMYSHOOTDIV 1000
+#define ENEMYSHOOTDIV 5000   // Change this value to modify difficulty
 
 sprite playerSpr, livesSprs[PLAYERLIVES], BonusSpr, bunkerSprs[BUNKERNUM], enemySprs[ENEMYNUM]; // sprites
 sprite playerBullet, enemyBullets[ENEMYCOLS]; // bullet sprites
@@ -345,14 +345,14 @@ void TitleScreen(void){
 	Nokia5110_SetCursor(2,1);
 	Nokia5110_OutString("INVADERS");
 	Nokia5110_SetCursor(0,5);
-	Nokia5110_OutString("by: Justin Lim");
+	Nokia5110_OutString("by: Justin L");
 	Delay100ms(5);
 	Sound_GameOver();	
 	while(!Fire){
 		Led_1(1);
 		Led_2(0);
 		Nokia5110_SetCursor(1,3);
-		Nokia5110_OutString("Press fire");
+		Nokia5110_OutString("Hold Fire");
 		Delay100ms(2);
 		Led_1(0);
 		Led_2(1);
@@ -375,11 +375,11 @@ void GameOver(void){
 	DAC_Out(0);
 	Nokia5110_Clear();
 	Nokia5110_SetCursor(2,0);
-	Nokia5110_OutString("Has been");
+	Nokia5110_OutString("You have");
 	Nokia5110_SetCursor(2,1);
-	Nokia5110_OutString("defeated");
+	Nokia5110_OutString("been");
 	Nokia5110_SetCursor(1,2);
-	Nokia5110_OutString("Earthling!");
+	Nokia5110_OutString("DESTROYED!");
 	Nokia5110_SetCursor(0,4);
 	Nokia5110_OutString("score:");
 	Nokia5110_OutUDec(score);
