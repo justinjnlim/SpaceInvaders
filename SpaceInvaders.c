@@ -344,6 +344,8 @@ void TitleScreen(void){
 	Nokia5110_OutString("SPACE");
 	Nokia5110_SetCursor(2,1);
 	Nokia5110_OutString("INVADERS");
+	Nokia5110_SetCursor(0,2);
+	Nokia5110_OutString("(For Apple)");
 	Nokia5110_SetCursor(0,5);
 	Nokia5110_OutString("by: Justin L");
 	Delay100ms(5);
